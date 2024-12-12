@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body class="bg-cover bg-center" style="background-image: url('{{ asset('images/bg1.png') }}');">
+<body class="bg-cover bg-center" style="background-image: url('{{ asset('images/bg1.png') }}'); font-family: 'Lora', serif;">
     <!-- Header -->
     <header class="bg-[#FAF2EE] w-full flex items-center" style="height: 64px; flex-shrink: 0;">
         <div class="max-w-7xl mx-auto w-full flex items-center justify-between px-4">
@@ -250,7 +250,7 @@
                             <!-- FAQ 1 -->
                             <div class="bg-[#FAF2EE] p-6 shadow-md hover:shadow-xl transition-all">
                                 <div class="flex items-center justify-between">
-                                    <h3 class="text-xl font-semibold text-black-900">Bagaimana cara menentukan bentuk
+                                    <h3 class="text-lg font-semibold text-black-900">Bagaimana cara menentukan bentuk
                                         wajah saya?</h3>
                                     <button class="text-black-500 text-2xl font-semibold"
                                         onclick="toggleFAQ('faq1')">+</button>
@@ -265,7 +265,7 @@
                             <!-- FAQ 2 -->
                             <div class="bg-[#FAF2EE] p-6 shadow-md hover:shadow-xl transition-all">
                                 <div class="flex items-center justify-between">
-                                    <h3 class="text-xl font-semibold text-black-900">Bagaimana cara mengetahui tone
+                                    <h3 class="text-lg font-semibold text-black-900">Bagaimana cara mengetahui tone
                                         kulit saya (warm, cool, atau neutral)?</h3>
                                     <button class="text-black-500 text-2xl font-semibold"
                                         onclick="toggleFAQ('faq2')">+</button>
@@ -280,7 +280,7 @@
                             <!-- FAQ 3 -->
                             <div class="bg-[#FAF2EE] p-6 shadow-md hover:shadow-xl transition-all">
                                 <div class="flex items-center justify-between">
-                                    <h3 class="text-xl font-semibold text-black-900">Apakah layanan ini gratis?</h3>
+                                    <h3 class="text-lg font-semibold text-black-900">Apakah layanan ini gratis?</h3>
                                     <button class="text-black-500 text-2xl font-semibold"
                                         onclick="toggleFAQ('faq3')">+</button>
                                 </div>
@@ -293,7 +293,7 @@
                             <!-- FAQ 4 -->
                             <div class="bg-[#FAF2EE] p-6 shadow-md hover:shadow-xl transition-all">
                                 <div class="flex items-center justify-between">
-                                    <h3 class="text-xl font-semibold text-black-900">Bagaimana cara menghubungi customer
+                                    <h3 class="text-lg font-semibold text-black-900">Bagaimana cara menghubungi customer
                                         support?</h3>
                                     <button class="text-black-500 text-2xl font-semibold"
                                         onclick="toggleFAQ('faq4')">+</button>

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-cover bg-center" style="background-image: url('{{ asset('images/bg-login.png') }}');">
+<body class="bg-cover bg-center" style="background-image: url('{{ asset('images/bg-login.png') }}'); font-family: 'Lora', serif;">
     <form action="{{ route('register') }}" method="POST">
         @csrf
         <!-- Form Fields -->

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-cover bg-center" style="background-image: url('{{ asset('images/bg-login.png') }}');">
+<body class="bg-cover bg-center" style="background-image: url('{{ asset('images/bg-login.png') }}'); font-family: 'Lora', serif;">
     <form action="{{ route('login') }}" method="POST">
         @csrf
         <!-- Form Fields -->
@@ -52,7 +52,7 @@
             </form>
 
             <p class="mt-4 text-center text-sm text-gray-500">
-                <a href="" class="font-semibold text-[#4E3C32] hover:text-white-500">Don't have an account?</a>
+                <a href="{{ route('register') }}" class="font-semibold text-[#4E3C32] hover:text-white-500">Don't have an account?</a>
             </p>
         </div>
     </div>
