@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\AdminController;
+
 //oy
 use App\Http\Controllers\UserController;
 Route::post('/profile/update', [UserController::class, 'update'])->name('user.updateProfile');
@@ -52,6 +54,13 @@ Route::get('/rekom', function () {
 Route::delete('/user/delete-profile', [UserController::class, 'deleteProfile'])->name('user.deleteProfile');
 
 
-
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/create', [AdminController::class, 'create'])->name('create');
+    Route::post('/store', [AdminController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [AdminController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [AdminController::class, 'destroy'])->name('destroy');
+});
 
 

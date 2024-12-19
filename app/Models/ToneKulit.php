@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ToneKulit extends Model
 {
-    // Tentukan nama tabel yang sesuai
-    protected $table = 'tone_kulit';  // Pastikan nama tabel sesuai
+    use HasFactory;
+
+    // Menentukan tabel yang digunakan
+    protected $table = 'tone_kulit';
+
+    // Tentukan kolom yang bisa diisi
+    protected $fillable = ['nama'];
 }
