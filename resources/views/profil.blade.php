@@ -23,7 +23,7 @@
 
             <!-- Navigation -->
             <nav class="flex items-center space-x-8">
-                <a href="/" class="text-black text-[16px] font-bold leading-[24px]">Home</a>
+                <a href="/" class="text-black text-[16px] font-normal leading-[24px]">Home</a>
                 <a href="/fitur" class="text-black text-[16px] font-normal leading-[24px]">Fitur</a>
                 <a href="/contact-us" class="text-black text-[16px] font-normal leading-[24px]">Contact Us</a>
 
@@ -31,7 +31,7 @@
                 @auth
                 <!-- Profile Button -->
                 <a href="{{ route('user.profile') }}"
-                    class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
+                    class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-bold leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
                     Profile
                 </a>
 
@@ -108,11 +108,13 @@
                 </div>
 
                 <div class="flex justify-end space-x-4 mt-6">
-                    <button type="button" class="bg-gray-300 text-black-800 px-4 py-2 rounded-md hover:bg-gray-400">
-                        Setting
+                    <button type="button" 
+                    class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
+                        Update
                     </button>
-                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
-                        Delete Profile
+                    <button type="submit" 
+                    class="flex justify-center items-center px-6 py-2 bg-[#644D41] w-[120px] h-[35px] text-[#FAF2EE] text-[16px] leading-[24px] hover:bg-[#4a3d33] transition-all duration-300 ease-in-out">
+                    Delete
                     </button>
                 </div>
             </form>
