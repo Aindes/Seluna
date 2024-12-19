@@ -27,16 +27,40 @@
                 <a href="/fitur" class="text-black text-[16px] font-normal leading-[24px]">Fitur</a>
                 <a href="/contact-us" class="text-black text-[16px] font-normal leading-[24px]">Contact Us</a>
 
-                <!-- Login Button -->
-                <a href="/login" class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
+                <!-- Tampilkan jika pengguna login -->
+                @auth
+                <!-- Profile Button -->
+                <a href="{{ route('user.profile') }}"
+                    class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
                     Profile
                 </a>
 
-                <!-- Sign Up Button -->
-                <a href="/register" class="flex justify-center items-center px-6 py-2 bg-[#644D41] w-[120px] h-[35px] text-[#FAF2EE] text-[16px] leading-[24px] hover:bg-[#4a3d33] transition-all duration-300 ease-in-out">
-                    Log Out
+                <!-- Logout Button -->
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit"
+                        class="flex justify-center items-center px-6 py-2 bg-[#644D41] w-[120px] h-[35px] text-[#FAF2EE] text-[16px] leading-[24px] hover:bg-[#4a3d33] transition-all duration-300 ease-in-out">
+                        Logout
+                    </button>
+                </form>
+                @endauth
+
+                <!-- Tampilkan jika pengguna belum login -->
+                @guest
+                <!-- Login Button -->
+                <a href="{{ route('login') }}"
+                    class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
+                    Login
                 </a>
+
+                <!-- Sign Up Button -->
+                <a href="{{ route('register') }}"
+                    class="flex justify-center items-center px-6 py-2 bg-[#644D41] w-[120px] h-[35px] text-[#FAF2EE] text-[16px] leading-[24px] hover:bg-[#4a3d33] transition-all duration-300 ease-in-out">
+                    Sign Up
+                </a>
+                @endguest
             </nav>
+
         </div>
     </header>
 
@@ -48,40 +72,40 @@
                 <h1 class="text-2xl font-semibold text-black-700 mb-6">Welcome, {{ Auth::user()->username }}</h1>
 
                 @if(session('success'))
-                    <div class="bg-green-100 border-t-4 border-green-500 text-green-700 p-4 mb-4">
-                        {{ session('success') }}
-                    </div>
+                <div class="bg-green-100 border-t-4 border-green-500 text-green-700 p-4 mb-4">
+                    {{ session('success') }}
+                </div>
                 @endif
 
                 @if(Auth::user() instanceof App\Models\Admin)
-                    <p>You are logged in as Admin.</p>
-                    <a href="{{ route('admin.dashboard') }}" class="text-blue-500">Go to Admin Dashboard</a>
+                <p>You are logged in as Admin.</p>
+                <a href="{{ route('admin.dashboard') }}" class="text-blue-500">Go to Admin Dashboard</a>
                 @else
-                    <h2>Create Your Profile</h2>
-                    <form action="{{ route('user.updateProfile') }}" method="POST">
-                        @csrf
-                        <div>
-                            <label for="bentuk_muka" class="block text-black-600 mb-1">Choose Face Shape:</label>
-                            <select name="bentuk_muka_id" class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900">
-                                @foreach($bentukMuka as $bentuk)
-                                    <option value="{{ $bentuk->id }}" @if($user->bentuk_muka_id == $bentuk->id) selected @endif>{{ $bentuk->nama }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                <h2>Create Your Profile</h2>
+                <form action="{{ route('user.updateProfile') }}" method="POST">
+                    @csrf
+                    <div>
+                        <label for="bentuk_muka" class="block text-black-600 mb-1">Choose Face Shape:</label>
+                        <select name="bentuk_muka_id" class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900">
+                            @foreach($bentukMuka as $bentuk)
+                            <option value="{{ $bentuk->id }}" @if($user->bentuk_muka_id == $bentuk->id) selected @endif>{{ $bentuk->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                        <div>
-                            <label for="tone_kulit" class="block text-black-600 mb-1">Choose Skin Tone:</label>
-                            <select name="tone_kulit_id" class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900">
-                                @foreach($toneKulit as $tone)
-                                    <option value="{{ $tone->id }}" @if($user->tone_kulit_id == $tone->id) selected @endif>{{ $tone->nama }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div>
+                        <label for="tone_kulit" class="block text-black-600 mb-1">Choose Skin Tone:</label>
+                        <select name="tone_kulit_id" class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900">
+                            @foreach($toneKulit as $tone)
+                            <option value="{{ $tone->id }}" @if($user->tone_kulit_id == $tone->id) selected @endif>{{ $tone->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                        <button type="submit" class="w-full bg-[#4E3C32] py-2 text-sm font-semibold text-white hover:bg-[#3a2c22] focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">
-                            Update Profile
-                        </button>
-                    </form>
+                    <button type="submit" class="w-full bg-[#4E3C32] py-2 text-sm font-semibold text-white hover:bg-[#3a2c22] focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">
+                        Update Profile
+                    </button>
+                </form>
                 @endif
             </div>
 

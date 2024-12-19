@@ -27,7 +27,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
-            return redirect()->route('home');
+            return redirect()->route('fitur');
         }
 
         return back()->withErrors(['email' => 'Login gagal, coba lagi']);
@@ -50,7 +50,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('fitur');
     }
 
     // Fungsi untuk profile

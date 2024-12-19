@@ -351,7 +351,7 @@
                         </ul>
                     </div>
                 </div>
-                    <p class="text-center text-[#9D9D9D] mt-6">&copy; 2024 Seluna. All rights reserved.</p>
+                <p class="text-center text-[#9D9D9D] mt-6">&copy; 2024 Seluna. All rights reserved.</p>
             </div>
         </div>
     </footer>

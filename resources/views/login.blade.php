@@ -19,7 +19,7 @@
                 <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 class="mt-1 text-center text-2xl font-bold text-black-900">Login</h2>
                 </div>
-                
+
                 <!-- Email Field -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-900">Email address</label>
@@ -27,7 +27,7 @@
                         <input type="email" name="email" id="email" value="{{ old('email') }}" autocomplete="email" required
                             class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900 focus:outline-[#4E3C32] focus:ring-0 focus:border-[#4E3C32]">
                         @error('email')
-                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         </button>
                     </div>
                     @error('password')
-                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -69,16 +69,16 @@
         const passwordField = document.getElementById("password");
         const eyeIcon = document.getElementById("eyeIcon");
 
-        togglePassword.addEventListener("click", function () {
+        togglePassword.addEventListener("click", function() {
             // Toggle the type attribute
             const type = passwordField.type === "password" ? "text" : "password";
             passwordField.type = type;
 
             // Toggle the eye icon (change from slash to open and vice versa)
             if (passwordField.type === "password") {
-                eyeIcon.src = "{{ asset('images/eye-slash.png') }}";  // Eye closed icon
+                eyeIcon.src = "{{ asset('images/eye-slash.png') }}"; // Eye closed icon
             } else {
-                eyeIcon.src = "{{ asset('images/eye.png') }}";  // Eye open icon
+                eyeIcon.src = "{{ asset('images/eye.png') }}"; // Eye open icon
             }
         });
     </script>

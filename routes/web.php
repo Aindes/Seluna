@@ -36,12 +36,14 @@ Route::get('/contact-us', function () {
     return view('contactus');
 });
 
-Route::get('/fitur', [RecommendationController::class, 'showFeaturePage']);
+Route::get('/fitur', [RecommendationController::class, 'showFeaturePage'])->name('fitur');
+
 Route::post('/rekomendasi', [RecommendationController::class, 'showRecommendations'])->name('rekomendasi');
 
 Route::get('/rekom', function () {
     return view('rekom');
 });
+
 
 
 

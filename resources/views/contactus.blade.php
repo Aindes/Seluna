@@ -113,7 +113,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+        </div>
         </section>
 
         <!-- Section with Background Color -->
@@ -146,7 +146,7 @@
                             class="rounded-full w-32 h-32 object-cover mb-4 shadow-lg">
                         <h3 class="font-semibold text-lg">Mutiara Dwi Artono</h3>
                         <p class="text-sm text-black-600">Product Design & Front End</p>
-                        <p class="text-sm text-black-600">235150700111032</p>
+                        <p class="text-sm text-black-600">235150700111052</p>
                     </div>
                     <!-- Team Member 2 -->
                     <div class="flex flex-col items-center">

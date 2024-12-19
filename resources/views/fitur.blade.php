@@ -70,25 +70,47 @@
       </div>
 
       <!-- Navigation -->
-      <nav class="flex items-center space-x-8">
-        <a href="/" class="text-black text-[16px] font-normal leading-[24px]">Home</a>
-        <a href="/fitur" class="text-black text-[16px] font-bold leading-[24px]">Fitur</a>
-        <a href="/contact-us" class="text-black text-[16px] font-normal leading-[24px]">Contact Us</a>
+            <nav class="flex items-center space-x-8">
+                <a href="/" class="text-black text-[16px] font-bold leading-[24px]">Home</a>
+                <a href="/fitur" class="text-black text-[16px] font-normal leading-[24px]">Fitur</a>
+                <a href="/contact-us" class="text-black text-[16px] font-normal leading-[24px]">Contact Us</a>
 
-        <!-- Login Button -->
-        <a href="/login"
-          class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
-          Login
-        </a>
+                <!-- Tampilkan jika pengguna login -->
+                @auth
+                <!-- Profile Button -->
+                <a href="{{ route('user.profile') }}"
+                    class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
+                    Profile
+                </a>
 
-        <!-- Sign Up Button -->
-        <a href="/register"
-          class="flex justify-center items-center px-6 py-2 bg-[#644D41] w-[120px] h-[35px] text-[#FAF2EE] text-[16px] leading-[24px] hover:bg-[#4a3d33] transition-all duration-300 ease-in-out">
-          Sign Up
-        </a>
-      </nav>
-    </div>
-  </header>
+                <!-- Logout Button -->
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit"
+                        class="flex justify-center items-center px-6 py-2 bg-[#644D41] w-[120px] h-[35px] text-[#FAF2EE] text-[16px] leading-[24px] hover:bg-[#4a3d33] transition-all duration-300 ease-in-out">
+                        Logout
+                    </button>
+                </form>
+                @endauth
+
+                <!-- Tampilkan jika pengguna belum login -->
+                @guest
+                <!-- Login Button -->
+                <a href="{{ route('login') }}"
+                    class="flex justify-center items-center w-[90px] h-[35px] px-[12px] py-[8px] border-2 border-[#644D41] text-black text-[16px] font-normal leading-[24px] hover:bg-[#F5E5DD] transition-all duration-300 ease-in-out">
+                    Login
+                </a>
+
+                <!-- Sign Up Button -->
+                <a href="{{ route('register') }}"
+                    class="flex justify-center items-center px-6 py-2 bg-[#644D41] w-[120px] h-[35px] text-[#FAF2EE] text-[16px] leading-[24px] hover:bg-[#4a3d33] transition-all duration-300 ease-in-out">
+                    Sign Up
+                </a>
+                @endguest
+            </nav>
+
+        </div>
+    </header>
 
   <!-- Section: Welcome Section -->
   <section class="flex justify-center items-center h-[500px] bg-cover bg-center bg-[url('images/bgcewek.png')] bg-black bg-opacity-50 min-h-screen">
@@ -177,16 +199,18 @@
         See Your Results
       </button>
       <form action="{{ route('rekomendasi') }}" method="POST">
-  @csrf
-  <!-- Menambahkan input tersembunyi untuk pilihan pengguna -->
-  <input type="hidden" name="face_shape" value="{{ $selectedFaceShape }}">
-  <input type="hidden" name="skin_tone" value="{{ $selectedSkinTone }}">
+    @csrf
+    <!-- Input Hidden untuk bentuk wajah -->
+    <input type="hidden" name="face_shape" value="{{ $selectedFaceShape ?? '' }}">
+    <!-- Input Hidden untuk tone warna kulit -->
+    <input type="hidden" name="skin_tone" value="{{ $selectedSkinTone ?? '' }}">
 
-  <button type="submit" class="bg-[#4e3c32] text-white w-[150px] h-[40px] text-[20px] font-bold hover:bg-[#5d4a3b] btn-next" style="font-family: 'Lora', serif;" {{ $selectedFaceShape && $selectedSkinTone ? '' : 'disabled' }}>
-    Next
-</button>
-
+    <button type="submit" class="bg-[#4e3c32] text-white w-[150px] h-[40px] font-bold btn-next"
+        {{ isset($selectedFaceShape) && isset($selectedSkinTone) ? '' : 'disabled' }}>
+        Next
+    </button>
 </form>
+
 
 
     </div>
