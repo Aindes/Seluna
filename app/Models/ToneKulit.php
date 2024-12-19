@@ -11,6 +11,7 @@ class ToneKulit extends Model
 
     // Menentukan tabel yang digunakan
     protected $table = 'tone_kulit';
+    public $timestamps = false;
 
     // Tentukan kolom yang bisa diisi
     protected $fillable = ['nama'];
