@@ -71,8 +71,8 @@
 
       <!-- Navigation -->
             <nav class="flex items-center space-x-8">
-                <a href="/" class="text-black text-[16px] font-bold leading-[24px]">Home</a>
-                <a href="/fitur" class="text-black text-[16px] font-normal leading-[24px]">Fitur</a>
+                <a href="/" class="text-black text-[16px] font-normal leading-[24px]">Home</a>
+                <a href="/fitur" class="text-black text-[16px] font-bold leading-[24px]">Fitur</a>
                 <a href="/contact-us" class="text-black text-[16px] font-normal leading-[24px]">Contact Us</a>
 
                 <!-- Tampilkan jika pengguna login -->

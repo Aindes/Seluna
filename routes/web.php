@@ -3,6 +3,10 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecommendationController;
+//oy
+use App\Http\Controllers\UserController;
+Route::post('/profile/update', [UserController::class, 'update'])->name('user.updateProfile');
+
 
 // Route untuk halaman utama
 Route::get('/', function () {
@@ -43,6 +47,10 @@ Route::post('/rekomendasi', [RecommendationController::class, 'showRecommendatio
 Route::get('/rekom', function () {
     return view('rekom');
 });
+
+// Route untuk menghapus profil pengguna
+Route::delete('/user/delete-profile', [UserController::class, 'deleteProfile'])->name('user.deleteProfile');
+
 
 
 

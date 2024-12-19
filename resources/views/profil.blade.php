@@ -64,57 +64,67 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="py-8">
-        <div class="bg-beige min-h-screen flex items-center px-20">
-            <!-- Form Section -->
-            <div class="w-1/2 pr-10 flex flex-col p-8 bg-[#FAF2EE] shadow-lg max-w-2xl">
-                <h1 class="text-2xl font-semibold text-black-700 mb-6">Welcome, {{ Auth::user()->username }}</h1>
+   <!-- Main Content -->
+<main class="py-8">
+    <div class="bg-beige min-h-screen flex items-center px-20">
+        <!-- Bagian Form di Sebelah Kiri -->
+        <div class="w-1/2 pr-10 flex flex-col p-8 bg-[#FAF2EE] shadow-lg max-w-2xl">
+            <h1 class="text-2xl font-semibold text-black-700 mb-6">Halo, Lunars!</h1>
 
-                @if(session('success'))
-                <div class="bg-green-100 border-t-4 border-green-500 text-green-700 p-4 mb-4">
-                    {{ session('success') }}
+            @if(session('success'))
+            <div class="bg-green-100 border-t-4 border-green-500 text-green-700 p-4 mb-4">
+                {{ session('success') }}
+            </div>
+            @endif
+
+            @if(Auth::user() instanceof App\Models\Admin)
+            <p>You are logged in as Admin.</p>
+            <a href="{{ route('admin.dashboard') }}" class="text-blue-500">Go to Admin Dashboard</a>
+            @else
+            <form action="{{ route('user.updateProfile') }}" method="POST" class="space-y-4">
+                @csrf
+                <div>
+                    <label for="full_name" class="block text-black-600 mb-1">Full Name</label>
+                    <input type="text" name="full_name" id="full_name" value="{{ old('full_name', Auth::user()->full_name) }}"
+                        class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900 focus:outline-[#4E3C32] focus:ring-0 focus:border-[#4E3C32]">
                 </div>
-                @endif
 
-                @if(Auth::user() instanceof App\Models\Admin)
-                <p>You are logged in as Admin.</p>
-                <a href="{{ route('admin.dashboard') }}" class="text-blue-500">Go to Admin Dashboard</a>
-                @else
-                <h2>Create Your Profile</h2>
-                <form action="{{ route('user.updateProfile') }}" method="POST">
-                    @csrf
-                    <div>
-                        <label for="bentuk_muka" class="block text-black-600 mb-1">Choose Face Shape:</label>
-                        <select name="bentuk_muka_id" class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900">
-                            @foreach($bentukMuka as $bentuk)
-                            <option value="{{ $bentuk->id }}" @if($user->bentuk_muka_id == $bentuk->id) selected @endif>{{ $bentuk->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <div>
+                    <label for="email" class="block text-black-600 mb-1">Email</label>
+                    <input type="email" name="email" id="email" value="{{ old('email', Auth::user()->email) }}"
+                        class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900 focus:outline-[#4E3C32] focus:ring-0 focus:border-[#4E3C32]">
+                </div>
 
-                    <div>
-                        <label for="tone_kulit" class="block text-black-600 mb-1">Choose Skin Tone:</label>
-                        <select name="tone_kulit_id" class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900">
-                            @foreach($toneKulit as $tone)
-                            <option value="{{ $tone->id }}" @if($user->tone_kulit_id == $tone->id) selected @endif>{{ $tone->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <div>
+                    <label for="username" class="block text-black-600 mb-1">Username</label>
+                    <input type="text" name="username" id="username" value="{{ old('username', Auth::user()->username) }}"
+                        class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900 focus:outline-[#4E3C32] focus:ring-0 focus:border-[#4E3C32]">
+                </div>
 
-                    <button type="submit" class="w-full bg-[#4E3C32] py-2 text-sm font-semibold text-white hover:bg-[#3a2c22] focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">
-                        Update Profile
+                <div>
+                    <label for="password" class="block text-black-600 mb-1">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Leave blank to keep current password"
+                        class="block w-full border border-[#4E3C32] bg-transparent px-3 py-2 text-base text-black-900 focus:outline-[#4E3C32] focus:ring-0 focus:border-[#4E3C32]">
+                </div>
+
+                <div class="flex justify-end space-x-4 mt-6">
+                    <button type="button" class="bg-gray-300 text-black-800 px-4 py-2 rounded-md hover:bg-gray-400">
+                        Setting
                     </button>
-                </form>
-                @endif
-            </div>
-
-            <!-- Image Section -->
-            <div class="w-1/2 flex items-center justify-center pr-0.5">
-                <img src="{{ asset('images/tone.png') }}" alt="Gambar Ilustrasi" class="max-w-full">
-            </div>
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+                        Delete Profile
+                    </button>
+                </div>
+            </form>
+            @endif
         </div>
-    </main>
+
+        <!-- Bagian Gambar di Sebelah Kanan -->
+        <div class="w-1/2 flex items-center justify-center pr-0.5">
+            <img src="{{ asset('images/tone.png') }}" alt="Gambar Ilustrasi" class="max-w-full">
+        </div>
+    </div>
+</main>
 
     <!-- Footer -->
     <footer class="bg-[#4E3C32] text-white py-12 sm:py-10">

@@ -21,8 +21,8 @@
 
       <!-- Navigation -->
       <nav class="flex items-center space-x-8">
-        <a href="/" class="text-black text-[16px] font-bold leading-[24px]">Home</a>
-        <a href="/fitur" class="text-black text-[16px] font-normal leading-[24px]">Fitur</a>
+        <a href="/" class="text-black text-[16px] font-normal leading-[24px]">Home</a>
+        <a href="/fitur" class="text-black text-[16px] font-bold leading-[24px]">Fitur</a>
         <a href="/contact-us" class="text-black text-[16px] font-normal leading-[24px]">Contact Us</a>
 
         @auth
@@ -55,21 +55,27 @@
     </div>
   </header>
 
-  <!-- Container -->
-  <div class="max-w-7xl mx-auto p-6 mb-12">
+ <!-- Container -->
+<div class="max-w-7xl mx-auto p-6 mb-12">
 
-    <!-- Heading -->
-    <h1 class="text-[25px] font-bold text-center text-black-800 mb-5 mt-5" style="font-family: 'Lora', serif;">
-      Gaya Rambut Terbaik Untuk Anda
-    </h1>
+<!-- Heading -->
+<h1 class="text-[25px] font-bold text-center text-black-800 mb-5 mt-5" style="font-family: 'Lora', serif;">
+  Gaya Rambut Terbaik Untuk Anda
+</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
+<!-- Grid untuk Kolom -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
+
     <!-- Gaya Rambut -->
     @if($haircut)
-        <div class="text-center w-[385px]">
-            <h2 class="text-xl font-bold mb-4">{{ $haircut->nama }}</h2>
-            <img src="{{ asset($haircut->gambar) }}" alt="{{ $haircut->nama }}" class="h-[200px] object-cover mx-auto mb-4">
-            <p>{{ $haircut->deskripsi }}</p>
+        <div class="relative p-4 text-center w-[385px] h-[550px] bg-cover bg-transparent bg-center mb-6 mt-6" style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); margin-right: -200px;">
+            <!-- Konten di dalam kotak -->
+            <h2 class="text-[18px] font-bold text-black-800 mb-6 mt-6" style="font-family: 'Lora', serif;">Rekomendasi Gaya Rambut</h2>
+            <img src="{{ asset($haircut->gambar) }}" alt="{{ $haircut->nama }}" class="h-[220px] w-[200px] object-cover mb-10 mt-10 mx-auto">
+            <h3 class="text-[18px] font-bold text-black-800 mb-2" style="font-family: 'Lora', serif;">{{ $haircut->nama }}</h3>
+            <p class="text-[14px] font-medium text-black-800 mt-2 mb-12" style="font-family: 'Lora', serif;">
+                {{ $haircut->deskripsi }}
+            </p>
         </div>
     @else
         <p class="text-center text-red-500">Gaya rambut tidak ditemukan.</p>
@@ -77,15 +83,23 @@
 
     <!-- Warna Rambut -->
     @if($hairColor)
-        <div class="text-center w-[385px]">
-            <h2 class="text-xl font-bold mb-4">{{ $hairColor->nama }}</h2>
-            <img src="{{ asset($hairColor->gambar) }}" alt="{{ $hairColor->nama }}" class="h-[200px] object-cover mx-auto mb-4">
-            <p>{{ $hairColor->deskripsi }}</p>
+        <div class="relative p-4 text-center w-[385px] h-[550px] bg-cover bg-transparent bg-center mb-6 mt-6" style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); margin-left: -200px;">
+            <!-- Konten di dalam kotak -->
+            <h2 class="text-[18px] font-bold text-black-800 mb-6 mt-6" style="font-family: 'Lora', serif;">Rekomendasi Warna Rambut</h2>
+            <img src="{{ asset($hairColor->gambar) }}" class="h-[200px] object-cover mb-12 mt-12 mx-auto">
+            <h3 class="text-[18px] font-bold text-black-800 mb-2" style="font-family: 'Lora', serif;">{{ $hairColor->nama }}</h3>
+            <p class="text-[14px] font-medium text-black-800 mt-2" style="font-family: 'Lora', serif;">
+                {{ $hairColor->deskripsi }}
+            </p>
         </div>
     @else
         <p class="text-center text-red-500">Warna rambut tidak ditemukan.</p>
     @endif
+
 </div>
+
+</div>
+
 
   <!-- Footer -->
   <footer class="bg-[#4E3C32] text-white py-12 sm:py-10">
